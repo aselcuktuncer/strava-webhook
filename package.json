@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "description": "Strava webhook listener for activity updates.",
   "main": "dist/server.js",
-  "type": "module",
   "scripts": {
     "dev": "ts-node src/server.ts",
     "start": "node dist/server.js",

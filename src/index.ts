@@ -34,6 +34,8 @@ interface StravaWebhookEvent {
   updates: Record<string, string>;
 }
 
+app.get("/healthz", (c) => c.json({ status: "ok", uptime: process.uptime() }));
+
 // POST /webhook — Receive webhook events
 app.post("/webhook", async (c) => {
   const body: StravaWebhookEvent = await c.req.json();
