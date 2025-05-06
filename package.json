@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "ts-node src/server.ts",
     "start": "node dist/server.js",
-    "build": "npm i & tsc"
+    "build": "npm install"
   },
   "keywords": [
     "strava",
