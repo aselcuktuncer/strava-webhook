@@ -36,6 +36,14 @@ interface StravaWebhookEvent {
 
 app.get("/healthz", (c) => c.json({ status: "ok", uptime: process.uptime() }));
 
+app.get("/cidom", (c) => {
+  return c.json({
+    message:
+      "Hi Cidom 🌷 You're the heart behind every heartbeat of this app ❤️ - with love, from Selçuk 💌",
+    timestamp: new Date().toISOString(),
+  });
+});
+
 // POST /webhook — Receive webhook events
 app.post("/webhook", async (c) => {
   const body: StravaWebhookEvent = await c.req.json();
