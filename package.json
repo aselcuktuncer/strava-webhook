@@ -1,0 +1,34 @@
+{
+  "name": "strava-webhook",
+  "author": "aselcuktuncer",
+  "version": "1.0.0",
+  "description": "Strava webhook listener for activity updates.",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "ts-node src/server.ts",
+    "start": "node dist/server.js",
+    "build": "tsc"
+  },
+  "keywords": [
+    "strava",
+    "automation",
+    "commute",
+    "bike",
+    "privacy",
+    "gear"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "@hono/node-server": "^1.14.1",
+    "dotenv": "^16.5.0",
+    "hono": "^4.7.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.14",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
