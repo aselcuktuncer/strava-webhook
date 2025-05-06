@@ -7,9 +7,28 @@ dotenv.config();
 
 export const STRAVA_API = "https://www.strava.com/api/v3";
 
+interface StravaWebhookEvent {
+  aspect_type: "create" | "update" | "delete";
+  event_time: number;
+  object_id: number;
+  object_type: "activity" | "athlete" | string;
+  owner_id: number;
+  subscription_id: number;
+  updates: Record<string, string>;
+}
+
 const app = new Hono();
 
-// GET /webhook — Verification step for Strava
+app.get("/healthz", (c) => c.json({ status: "ok", uptime: process.uptime() }));
+
+app.get("/cidom", (c) => {
+  return c.json({
+    message:
+      "Hi Cidom. You're the heart behind every heartbeat of this app. With love, from Selcuk <3",
+    status: "ok when you are happy",
+  });
+});
+
 app.get("/webhook", (c) => {
   console.log("📥 Webhook verification request received");
 
@@ -24,27 +43,6 @@ app.get("/webhook", (c) => {
   return c.text("Forbidden", 403);
 });
 
-interface StravaWebhookEvent {
-  aspect_type: "create" | "update" | "delete";
-  event_time: number;
-  object_id: number;
-  object_type: "activity" | "athlete" | string;
-  owner_id: number;
-  subscription_id: number;
-  updates: Record<string, string>;
-}
-
-app.get("/healthz", (c) => c.json({ status: "ok", uptime: process.uptime() }));
-
-app.get("/cidom", (c) => {
-  return c.json({
-    message:
-      "Hi Cidom. You're the heart behind every heartbeat of this app. With love, from Selcuk <3",
-    status: "ok when you are happy",
-  });
-});
-
-// POST /webhook — Receive webhook events
 app.post("/webhook", async (c) => {
   const body: StravaWebhookEvent = await c.req.json();
 
