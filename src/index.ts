@@ -39,8 +39,8 @@ app.get("/healthz", (c) => c.json({ status: "ok", uptime: process.uptime() }));
 app.get("/cidom", (c) => {
   return c.json({
     message:
-      "Hi Cidom 🌷 You're the heart behind every heartbeat of this app ❤️ - with love, from Selçuk 💌",
-    timestamp: new Date().toISOString(),
+      "Hi Cidom. You're the heart behind every heartbeat of this app. With love, from Selcuk <3",
+    status: "ok when you are happy",
   });
 });
 
