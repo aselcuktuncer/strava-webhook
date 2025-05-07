@@ -17,7 +17,7 @@
     "privacy",
     "gear"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@hono/node-server": "^1.14.1",
     "dotenv": "^16.5.0",
