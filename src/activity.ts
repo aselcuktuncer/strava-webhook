@@ -9,6 +9,9 @@ export interface Activity {
   commute: boolean;
   gear_id: string | null;
   type: string;
+  sport_type?: string;
+  elapsed_time?: number;
+  hide_from_home?: boolean;
 }
 
 export const GEAR_ID = process.env.STRAVA_COMMUTE_BIKE_ID;

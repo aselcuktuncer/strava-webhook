@@ -1,9 +1,9 @@
 # Strava Webhook Listener
 
-A lightweight webhook service that listens for [Strava](https://www.strava.com/) activity updates and enhances **commute rides** by:
+A lightweight webhook service that listens for [Strava](https://www.strava.com/) activity updates and applies optional automation rules:
 
-- Automatically **hiding commute rides** from the public feed.
-- **Tagging commute rides** with a specific bike (e.g., "Commuter Bike").
+- Commute bike tagging + hide-from-feed automation (feature-flagged).
+- Hide short training activities from feed for `Yoga`, `Workout`, and `WeightTraining` when duration is under a configurable threshold (default: 30 minutes).
 
 ---
 
@@ -33,7 +33,10 @@ Follow these steps to deploy your Strava Webhook Listener using Render’s free 
    - `STRAVA_CLIENT_ID` – Your Strava app client ID.
    - `STRAVA_CLIENT_SECRET` – Your Strava app client secret.
    - `STRAVA_REFRESH_TOKEN` – A valid refresh token with `activity:read_all` access to read and modify activities.
-   - `COMMUTE_BIKE_ID` – The gear ID of your commuter bike (from your Strava profile).
+   - `STRAVA_COMMUTE_BIKE_ID` – The gear ID of your commuter bike (from your Strava profile).
+   - `IS_COMMUTE_HIDE_FROM_FEED_ENABLED` – Set to `true` to enable commute bike tagging/hide rule (default: `false`).
+   - `IS_SHORT_TRAINING_HIDE_ENABLED` – Set to `true` to enable short-training hide rule (default: `true`).
+   - `SHORT_TRAINING_MAX_MINUTES` – Duration threshold in minutes for short-training hide rule (default: `30`).
 
 5. Set the **build and start commands**:
 
